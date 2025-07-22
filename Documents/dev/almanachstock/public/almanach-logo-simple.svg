@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .text { fill: #059669; font-family: serif; font-weight: bold; font-size: 14px; }
+      .icon { fill: none; stroke: #059669; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .filled { fill: #059669; stroke: none; }
+    </style>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#059669" stroke-width="2"/>
+  
+  <!-- Simplified text around circle -->
+  <path d="M 40 25 A 60 60 0 0 1 160 25" id="top-curve" fill="none"/>
+  <text class="text" letter-spacing="2">
+    <textPath href="#top-curve" startOffset="50%" text-anchor="middle">L'ALMANACH</textPath>
+  </text>
+  
+  <path d="M 40 175 A 60 60 0 0 0 160 175" id="bottom-curve" fill="none"/>
+  <text class="text" letter-spacing="2">
+    <textPath href="#bottom-curve" startOffset="50%" text-anchor="middle">MONTMARTRE</textPath>
+  </text>
+  
+  <!-- Simplified central icon - stylized A -->
+  <g transform="translate(100,100)">
+    <!-- Letter A stylized -->
+    <path class="icon" stroke-width="3" d="M-20,20 L0,-20 L20,20 M-12,5 L12,5"/>
+    <!-- Small decorative elements -->
+    <circle class="filled" cx="-15" cy="-10" r="2"/>
+    <circle class="filled" cx="15" cy="-10" r="2"/>
+    <circle class="filled" cx="0" cy="25" r="2"/>
+  </g>
+  
+  <!-- Corner decorative elements -->
+  <circle class="filled" cx="30" cy="50" r="1.5"/>
+  <circle class="filled" cx="170" cy="50" r="1.5"/>
+  <circle class="filled" cx="30" cy="150" r="1.5"/>
+  <circle class="filled" cx="170" cy="150" r="1.5"/>
+</svg> 

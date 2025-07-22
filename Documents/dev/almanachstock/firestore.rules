@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 🔥 Règles pour la collection "boissons"
+    match /boissons/{documentId} {
+      // Permettre la lecture, l'écriture, la mise à jour et la suppression 
+      // seulement aux utilisateurs authentifiés
+      allow read, write, update, delete: if request.auth != null;
+    }
+    
+    // 🔒 Règle par défaut : nier l'accès à toutes les autres collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 

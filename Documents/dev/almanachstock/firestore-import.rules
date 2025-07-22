@@ -1,0 +1,23 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 🚨 RÈGLES TEMPORAIRES POUR L'IMPORT INITIAL 🚨
+    // ⚠️  À REMPLACER après l'import par les vraies règles de sécurité
+    
+    match /boissons/{documentId} {
+      // Autoriser toutes les opérations temporairement
+      allow read, write, update, delete: if true;
+    }
+    
+    // Bloquer toutes les autres collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+// 📝 IMPORTANT : 
+// 1. Copiez ces règles dans Firebase Console
+// 2. Lancez l'import: node scripts/import-excel-data.js  
+// 3. Après l'import, remettez les vraies règles depuis firestore.rules 

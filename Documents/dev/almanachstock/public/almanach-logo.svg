@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .text { fill: #059669; font-family: serif; font-weight: bold; }
+      .icon { fill: none; stroke: #059669; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .filled { fill: #059669; stroke: none; }
+    </style>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="190" fill="none" stroke="#059669" stroke-width="2"/>
+  
+  <!-- Top text: L'ALMANACH -->
+  <path d="M 80 50 A 120 120 0 0 1 320 50" id="top-curve" fill="none"/>
+  <text class="text" font-size="24" letter-spacing="3">
+    <textPath href="#top-curve" startOffset="50%" text-anchor="middle">L'ALMANACH</textPath>
+  </text>
+  
+  <!-- Bottom text: MONTMARTRE -->
+  <path d="M 80 350 A 120 120 0 0 0 320 350" id="bottom-curve" fill="none"/>
+  <text class="text" font-size="24" letter-spacing="3">
+    <textPath href="#bottom-curve" startOffset="50%" text-anchor="middle">MONTMARTRE</textPath>
+  </text>
+  
+  <!-- Central decorative elements -->
+  
+  <!-- Rabbit (top center) -->
+  <g transform="translate(200,120)">
+    <path class="icon" d="M-15,-10 Q-20,-15 -15,-20 Q-10,-25 -5,-20 Q0,-15 5,-20 Q10,-25 15,-20 Q20,-15 15,-10 Q10,-5 5,0 Q0,5 -5,0 Q-10,-5 -15,-10 Z"/>
+    <path class="icon" d="M-10,-5 Q-5,10 0,15 Q5,10 10,-5"/>
+    <circle class="filled" cx="-5" cy="-5" r="1"/>
+    <circle class="filled" cx="5" cy="-5" r="1"/>
+  </g>
+  
+  <!-- Palette (left) -->
+  <g transform="translate(120,200)">
+    <ellipse class="icon" cx="0" cy="0" rx="25" ry="15"/>
+    <circle class="filled" cx="-10" cy="-5" r="3"/>
+    <circle class="filled" cx="0" cy="-8" r="3"/>
+    <circle class="filled" cx="10" cy="-5" r="3"/>
+    <circle class="filled" cx="-8" cy="5" r="3"/>
+    <circle class="filled" cx="8" cy="5" r="3"/>
+    <path class="icon" d="M20,-10 L35,-15"/>
+  </g>
+  
+  <!-- Mushroom (right) -->
+  <g transform="translate(280,200)">
+    <path class="icon" d="M-15,-5 Q-15,-15 0,-15 Q15,-15 15,-5 Q10,0 5,0 L5,15 L-5,15 L-5,0 Q-10,0 -15,-5"/>
+    <circle class="filled" cx="-8" cy="-8" r="2"/>
+    <circle class="filled" cx="8" cy="-8" r="2"/>
+    <circle class="filled" cx="0" cy="-12" r="2"/>
+  </g>
+  
+  <!-- Central decorative plant -->
+  <g transform="translate(200,200)">
+    <path class="icon" d="M0,20 Q-5,15 -10,10 Q-15,5 -20,0 Q-15,-5 -10,-10 Q-5,-15 0,-20"/>
+    <path class="icon" d="M0,20 Q5,15 10,10 Q15,5 20,0 Q15,-5 10,-10 Q5,-15 0,-20"/>
+    <path class="icon" d="M-15,5 Q-10,0 -5,-5 Q0,-10 5,-5 Q10,0 15,5"/>
+    <path class="icon" d="M-15,-5 Q-10,0 -5,5 Q0,10 5,5 Q10,0 15,-5"/>
+  </g>
+  
+  <!-- Fish (bottom) -->
+  <g transform="translate(200,280)">
+    <path class="icon" d="M-20,0 Q-15,-8 0,-5 Q15,-8 20,0 Q15,8 0,5 Q-15,8 -20,0"/>
+    <path class="icon" d="M-20,0 L-30,-5 L-30,5 Z"/>
+    <path class="icon" d="M5,-3 L15,-8 M5,3 L15,8 M-5,-2 L-5,2 M0,-1 L0,1"/>
+    <circle class="filled" cx="10" cy="0" r="1"/>
+  </g>
+  
+  <!-- Decorative leaves around -->
+  <g class="icon">
+    <path d="M60,150 Q70,140 80,150 Q70,160 60,150"/>
+    <path d="M340,150 Q330,140 320,150 Q330,160 340,150"/>
+    <path d="M60,250 Q70,240 80,250 Q70,260 60,250"/>
+    <path d="M340,250 Q330,240 320,250 Q330,260 340,250"/>
+    <path d="M150,60 Q140,70 150,80 Q160,70 150,60"/>
+    <path d="M250,60 Q240,70 250,80 Q260,70 250,60"/>
+    <path d="M150,340 Q140,330 150,320 Q160,330 150,340"/>
+    <path d="M250,340 Q240,330 250,320 Q260,330 250,340"/>
+  </g>
+</svg> 
