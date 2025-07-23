@@ -40,12 +40,13 @@ interface FormData {
 }
 
 interface EditPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function EditPage({ params }: EditPageProps) {
+  const [id, setId] = useState<string>('');
   const { user } = useAuth();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -67,14 +68,24 @@ export default function EditPage({ params }: EditPageProps) {
   const [originalData, setOriginalData] = useState<FormData | null>(null);
 
   useEffect(() => {
-    loadBoisson();
-  }, [params.id]);
+    const extractParams = async () => {
+      const resolvedParams = await params;
+      setId(resolvedParams.id);
+    };
+    extractParams();
+  }, [params]);
+
+  useEffect(() => {
+    if (id) {
+      loadBoisson();
+    }
+  }, [id]);
 
   const loadBoisson = async () => {
     try {
       setIsLoading(true);
       setError('');
-      const boisson = await getBoissonById(params.id);
+      const boisson = await getBoissonById(id);
       
       if (!boisson) {
         setError('Boisson non trouvée');
@@ -82,12 +93,12 @@ export default function EditPage({ params }: EditPageProps) {
       }
 
       const data = {
-        nom: boisson.nom,
-        catégorie: boisson.catégorie,
-        quantité: boisson.quantité,
-        seuil_alerte: boisson.seuil_alerte,
-        prix_achat: boisson.prix_achat,
-        fournisseur: boisson.fournisseur
+        nom: (boisson as any).nom,
+        catégorie: (boisson as any).catégorie,
+        quantité: (boisson as any).quantité,
+        seuil_alerte: (boisson as any).seuil_alerte,
+        prix_achat: (boisson as any).prix_achat,
+        fournisseur: (boisson as any).fournisseur
       };
 
       setFormData(data);
@@ -150,7 +161,7 @@ export default function EditPage({ params }: EditPageProps) {
     }
 
     try {
-      await updateBoisson(params.id, {
+      await updateBoisson(id, {
         nom: formData.nom.trim(),
         catégorie: formData.catégorie,
         quantité: Number(formData.quantité),
@@ -179,7 +190,7 @@ export default function EditPage({ params }: EditPageProps) {
     setError('');
 
     try {
-      await deleteBoisson(params.id);
+      await deleteBoisson(id);
       setShowDeleteDialog(false);
       router.push('/dashboard');
     } catch (err: any) {

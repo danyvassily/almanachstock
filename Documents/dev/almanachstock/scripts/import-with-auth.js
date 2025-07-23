@@ -25,7 +25,7 @@ const db = getFirestore(app);
 
 // ⚠️ CHANGEZ CES IDENTIFIANTS ⚠️
 const ADMIN_CREDENTIALS = {
-  email: "test@almanachstock.com",
+  email: "test@amphore-stock.com",
   password: "Test123456!",
 };
 
@@ -282,7 +282,7 @@ function processWineSheet(worksheet) {
 }
 
 async function main() {
-  console.log("📥 Import Authentifié des données Excel vers Almanach Stock");
+  console.log("📥 Import Authentifié des données Excel vers Amphore Stock");
   console.log("=".repeat(60));
 
   try {

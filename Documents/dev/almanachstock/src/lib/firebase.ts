@@ -3,16 +3,20 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// 🔥 REMPLACE PAR TA CONFIGURATION FIREBASE RÉELLE 🔥
+// Configuration Firebase sécurisée avec variables d'environnement
 const firebaseConfig = {
-  apiKey: "AIzaSyBUW7t089PEYdrvkvhLrQnFKZqrooZoYHg",
-  authDomain: "l-almanach-stock.firebaseapp.com",
-  projectId: "l-almanach-stock",
-  storageBucket: "l-almanach-stock.firebasestorage.app",
-  messagingSenderId: "471255748821",
-  appId: "1:471255748821:web:fab8832adb0e016604125c",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyBUW7t089PEYdrvkvhLrQnFKZqrooZoYHg",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "l-almanach-stock.firebaseapp.com",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "l-almanach-stock",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "l-almanach-stock.firebasestorage.app",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "471255748821",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:471255748821:web:fab8832adb0e016604125c",
 };
+
+// Validation de la configuration
+if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
+  throw new Error("Configuration Firebase manquante. Vérifiez vos variables d'environnement.");
+}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

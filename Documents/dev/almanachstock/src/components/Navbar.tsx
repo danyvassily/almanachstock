@@ -22,7 +22,8 @@ import {
   Wine,
   AlertTriangle, 
   LogOut, 
-  User 
+  User,
+  RefreshCw
 } from 'lucide-react';
 import useStockAlerts from '@/hooks/useStockAlerts';
 
@@ -37,7 +38,7 @@ export default function Navbar({ user }: NavbarProps) {
   
   // 🔥 MODE PRODUCTION : Authentification activée
   const isDevelopmentMode = false; // Changé à false pour activer l'auth
-  const devUser = { email: 'demo@almanach-stock.com' };
+  const devUser = { email: 'demo@amphore-stock.com' };
   const currentUser = isDevelopmentMode ? devUser : user;
   
   const alerteCounts = getAlerteCounts();
@@ -76,22 +77,17 @@ export default function Navbar({ user }: NavbarProps) {
           <div className="flex items-center">
             <Link href="/dashboard" className="flex items-center space-x-3">
               <div className="relative">
-                <Image
+                <Image 
                   src="/almanach-logo-simple.svg"
-                  alt="L&apos;Almanach Montmartre"
-                  width={40}
-                  height={40}
-                  className="h-10 w-10"
+                  alt="Amphore Stock"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-gray-900 hidden sm:block leading-tight">
-                  L&apos;Almanach
-                </span>
-                <span className="text-xs text-green-600 hidden sm:block leading-tight">
-                  Stock Management
-                </span>
-              </div>
+              <span className="ml-2 text-xl font-bold text-gray-900">
+                Amphore Stock
+              </span>
               {isDevelopmentMode && (
                 <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">
                   MODE DEV
@@ -105,6 +101,12 @@ export default function Navbar({ user }: NavbarProps) {
                 <Button variant="ghost" className="text-gray-700 hover:text-blue-600">
                   <BarChart3 className="h-4 w-4 mr-2" />
                   Dashboard
+                </Button>
+              </Link>
+              <Link href="/adjust">
+                <Button variant="ghost" className="text-gray-700 hover:text-green-600">
+                  <RefreshCw className="h-4 w-4 mr-2" />
+                  Ajuster Stock
                 </Button>
               </Link>
               <Link href="/vins">
@@ -181,6 +183,14 @@ export default function Navbar({ user }: NavbarProps) {
                   <Button variant="ghost" className="w-full justify-start">
                     <BarChart3 className="h-4 w-4 mr-2" />
                     Dashboard
+                  </Button>
+                </div>
+              </Link>
+              <Link href="/adjust" onClick={closeMenu}>
+                <div className="w-full">
+                  <Button variant="ghost" className="w-full justify-start">
+                    <RefreshCw className="h-4 w-4 mr-2" />
+                    Ajuster Stock
                   </Button>
                 </div>
               </Link>

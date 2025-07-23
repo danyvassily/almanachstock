@@ -32,6 +32,7 @@ import {
   Info
 } from 'lucide-react';
 import useStockAlerts from '@/hooks/useStockAlerts';
+import ProductActionModal from '@/components/ProductActionModal';
 
 interface Boisson {
   id: string;
@@ -62,6 +63,8 @@ export default function StockTable({
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedBoisson, setSelectedBoisson] = useState<Boisson | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const { getStockStatus, getStatusColor, getStatusText } = useStockAlerts();
 
@@ -256,6 +259,20 @@ export default function StockTable({
     }).format(date);
   };
 
+  const handleRowClick = (boisson: Boisson) => {
+    setSelectedBoisson(boisson);
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setSelectedBoisson(null);
+  };
+
+  const handleModalUpdate = () => {
+    loadBoissons(); // Recharger les données
+  };
+
   if (loading) {
     return (
       <Card>
@@ -388,7 +405,11 @@ export default function StockTable({
                     const statusText = getStatusText(status);
                     
                     return (
-                      <TableRow key={boisson.id}>
+                      <TableRow 
+                        key={boisson.id}
+                        className="cursor-pointer hover:bg-gray-50 transition-colors"
+                        onClick={() => handleRowClick(boisson)}
+                      >
                         <TableCell className="font-medium">{boisson.nom}</TableCell>
                         <TableCell>
                           <Badge variant="outline">{boisson.catégorie}</Badge>
@@ -404,7 +425,7 @@ export default function StockTable({
                         <TableCell>{formatPrice(boisson.prix_achat)}</TableCell>
                         <TableCell>{boisson.fournisseur}</TableCell>
                         <TableCell>{formatDate(boisson.date_dernière_modif)}</TableCell>
-                        <TableCell>
+                        <TableCell onClick={(e) => e.stopPropagation()}>
                           <Link href={`/edit/${boisson.id}`}>
                             <Button variant="ghost" size="sm">
                               <Edit className="h-4 w-4" />
@@ -426,14 +447,20 @@ export default function StockTable({
                 const statusText = getStatusText(status);
                 
                 return (
-                  <Card key={boisson.id} className="p-4">
+                  <Card 
+                    key={boisson.id} 
+                    className="p-4 cursor-pointer hover:shadow-md transition-shadow"
+                    onClick={() => handleRowClick(boisson)}
+                  >
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-semibold text-lg">{boisson.nom}</h3>
-                      <Link href={`/edit/${boisson.id}`}>
-                        <Button variant="ghost" size="sm">
-                          <Edit className="h-4 w-4" />
-                        </Button>
-                      </Link>
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <Link href={`/edit/${boisson.id}`}>
+                          <Button variant="ghost" size="sm">
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
@@ -467,6 +494,14 @@ export default function StockTable({
           </>
         )}
       </CardContent>
+
+      {/* Modal d'actions sur le produit */}
+      <ProductActionModal
+        boisson={selectedBoisson}
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        onUpdate={handleModalUpdate}
+      />
     </Card>
   );
 } 

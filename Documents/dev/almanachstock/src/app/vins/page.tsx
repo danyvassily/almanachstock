@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Navbar from '@/components/Navbar';
 import StockTable from '@/components/StockTable';
-import AlertsPanel from '@/components/AlertsPanel';
+import CompactAlertsPanel from '@/components/CompactAlertsPanel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Wine, BarChart3, TrendingUp } from 'lucide-react';
 import useVinsMetrics from '@/hooks/useVinsMetrics';
@@ -90,7 +90,7 @@ export default function VinsPage() {
             </div>
 
             {/* Alertes spécifiques aux vins */}
-            <AlertsPanel filterCategory="Vin" />
+            <CompactAlertsPanel filterCategory="Vin" />
 
             {/* Table des vins */}
             <StockTable filterCategory="Vin" />

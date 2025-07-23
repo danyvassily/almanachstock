@@ -3,7 +3,7 @@ const { auth } = require("../src/lib/firebase.ts");
 
 // Informations de l'utilisateur de test
 const TEST_USER = {
-  email: "test@almanachstock.com",
+  email: "test@amphore-stock.com",
   password: "Test123456!",
 };
 

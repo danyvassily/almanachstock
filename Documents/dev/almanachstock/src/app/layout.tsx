@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "L'Almanach Montmartre - Stock Management",
-  description: "Application de gestion de stock pour L'Almanach Montmartre - Boissons, vins et inventaire avec alertes automatiques",
-  keywords: "L'Almanach Montmartre, gestion stock, restaurant, boissons, vins, inventaire, alertes, montmartre",
+  title: "Amphore Stock - Gestion de Stock",
+  description: "Application de gestion de stock Amphore Stock - Boissons, vins et inventaire avec alertes automatiques",
+  keywords: "Amphore Stock, gestion stock, restaurant, boissons, vins, inventaire, alertes",
   icons: {
     icon: '/almanach-logo.svg',
     apple: '/almanach-logo.svg',

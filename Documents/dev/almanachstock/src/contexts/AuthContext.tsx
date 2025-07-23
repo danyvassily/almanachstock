@@ -7,13 +7,16 @@ import {
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword,
   signOut,
-  UserCredential 
+  UserCredential,
+  GoogleAuthProvider,
+  signInWithPopup
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<UserCredential>;
+  loginWithGoogle: () => Promise<UserCredential>;
   register: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
   loading: boolean;
@@ -49,6 +52,33 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
+  const loginWithGoogle = async (): Promise<UserCredential> => {
+    if (!auth) {
+      throw new Error('Firebase auth not initialized');
+    }
+    
+    setLoading(true);
+    try {
+      const provider = new GoogleAuthProvider();
+      // Configuration des scopes pour récupérer email et profil
+      provider.addScope('email');
+      provider.addScope('profile');
+      
+      // Configuration des paramètres personnalisés
+      provider.setCustomParameters({
+        prompt: 'select_account',
+        access_type: 'offline'
+      });
+      
+      const result = await signInWithPopup(auth, provider);
+      return result;
+    } catch (error) {
+      setLoading(false);
+      console.error('Google login error:', error);
+      throw error;
+    }
+  };
+
   const register = async (email: string, password: string): Promise<UserCredential> => {
     setLoading(true);
     try {
@@ -73,6 +103,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const value: AuthContextType = {
     user,
     login,
+    loginWithGoogle,
     register,
     logout,
     loading

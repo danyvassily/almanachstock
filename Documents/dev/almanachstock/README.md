@@ -1,208 +1,224 @@
-# 📊 Almanach Stock - Gestion de Stock Restaurant
+# 📊 Amphore Stock - Gestion de Stock Restaurant
 
-Application web moderne de gestion de stock de boissons pour restaurants, développée avec **Next.js**, **Firebase** et **Tailwind CSS**.
+**Amphore Stock** est une application web moderne de gestion d'inventaire dédiée aux restaurants, bars et établissements de restauration. Elle permet un suivi précis des stocks de boissons, vins et autres produits avec un système d'alertes automatiques.
 
-## ✨ Fonctionnalités
+## 🚀 Fonctionnalités Principales
 
-### 🔐 Authentification
-- Connexion sécurisée avec Firebase Auth
-- Système de création de compte
-- Protection des routes privées
-- Déconnexion automatique
+### 📋 Gestion d'Inventaire
+- **Suivi en temps réel** : Visualisation instantanée des niveaux de stock
+- **Catégorisation avancée** : Organisation par types (vins, bières, spiritueux, etc.)
+- **Coûts et prix** : Gestion des coûts d'achat et prix de vente
+- **Alertes intelligentes** : Notifications automatiques pour les stocks faibles
 
-### 📱 Dashboard Principal
-- Vue d'ensemble des stocks en temps réel
-- Tableau responsive avec tri et filtres
-- Système d'alertes visuelles par couleur :
-  - 🔴 **Rouge** : Stock épuisé (quantité = 0)
-  - 🟠 **Orange** : Stock faible (≤ seuil d'alerte)
-  - 🟡 **Jaune** : À surveiller (≤ seuil × 1.5)
-  - 🟢 **Vert** : Stock OK
+### 📊 Tableau de Bord Analytique
+- **Métriques clés** : Vue d'ensemble des performances
+- **Indicateurs visuels** : Graphiques et statistiques en temps réel
+- **Filtres avancés** : Recherche et tri multicritères
+- **Exports** : Données exportables pour analyses
 
-### 🍹 Gestion des Boissons
-- **Ajouter** : Nouveau produit avec formulaire complet
-- **Modifier** : Édition en temps réel des informations
-- **Supprimer** : Suppression sécurisée avec confirmation
-- **Catégories** : Soft, Alcool, Vin, Bière, Cocktail, Café/Thé, Autre
+### 🔐 Sécurité et Authentification
+- **Authentification Firebase** : Connexion sécurisée
+- **Gestion des permissions** : Accès contrôlé par utilisateur
+- **Sauvegarde automatique** : Données synchronisées en temps réel
 
-### 🚨 Système d'Alertes
-- Alertes automatiques en temps réel
-- Notifications pour stocks critiques
-- Résumé visuel des alertes sur le dashboard
-- Filtrage des produits en alerte
-
-### 📊 Données Trackées
-- **Nom** : Identifiant du produit
-- **Catégorie** : Classification par type
-- **Quantité** : Stock actuel
-- **Seuil d'alerte** : Niveau de déclenchement des alertes
-- **Prix d'achat** : Coût unitaire
-- **Fournisseur** : Source d'approvisionnement
-- **Date de modification** : Horodatage automatique
-
-## 🛠️ Technologies Utilisées
+## 🛠 Technologies Utilisées
 
 ### Frontend
-- **Next.js 15** - Framework React avec App Router
-- **TypeScript** - Typage statique
-- **Tailwind CSS** - Framework CSS utilitaire
-- **ShadCN UI** - Bibliothèque de composants modernes
-- **Lucide React** - Icônes SVG
+- **Next.js 15** avec App Router
+- **React 18** avec TypeScript
+- **Tailwind CSS** pour le design
+- **Radix UI** pour les composants
+- **Recharts** pour les graphiques
 
-### Backend
-- **Firebase Auth** - Authentification utilisateur
-- **Firestore** - Base de données NoSQL temps réel
-- **Firebase SDK** - Intégration complète
+### Backend & Base de Données
+- **Firebase Authentication** pour l'authentification
+- **Firestore** pour la base de données NoSQL
+- **Firebase Hosting** pour le déploiement
 
 ### Outils de Développement
-- **ESLint** - Linting et qualité de code
-- **PostCSS** - Traitement CSS
-- **npm** - Gestionnaire de packages
+- **TypeScript** pour la sécurité des types
+- **ESLint** pour la qualité du code
+- **PostCSS** pour les optimisations CSS
 
-## 🚀 Installation et Démarrage
+## 📦 Installation et Configuration
 
 ### Prérequis
-- **Node.js** >= 18.0.0
-- **npm** >= 8.0.0
-- Compte **Firebase** configuré
+- Node.js 18.0+ 
+- npm ou yarn
+- Compte Firebase
 
-### Installation
-\`\`\`bash
-# Cloner le projet
-git clone <url-du-repo>
-cd almanachstock
-
-# Installer les dépendances
+### 1. Cloner le Repository
+```bash
+git clone https://github.com/votre-username/amphore-stock.git
+cd amphore-stock
 npm install
+```
 
-# Démarrer en développement
+### 2. Configuration Firebase
+1. Créez un projet Firebase sur [console.firebase.google.com](https://console.firebase.google.com)
+2. Activez Authentication et Firestore
+3. Copiez vos clés de configuration
+4. Créez un fichier `.env.local` :
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=votre_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=votre_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=votre_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=votre_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=votre_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=votre_app_id
+```
+
+### 3. Lancer l'Application
+```bash
+# Mode développement
 npm run dev
-\`\`\`
 
-### Configuration Firebase
-1. Créer un projet Firebase sur [console.firebase.google.com](https://console.firebase.google.com)
-2. Activer **Authentication** (Email/Password)
-3. Activer **Firestore Database**
-4. Récupérer la configuration et l'ajouter dans `src/lib/firebase.js`
+# Build de production
+npm run build
+npm start
+```
 
-### Scripts Disponibles
-\`\`\`bash
-npm run dev      # Serveur de développement
-npm run build    # Build de production
-npm run start    # Serveur de production
-npm run lint     # Vérification du code
-\`\`\`
+L'application sera accessible sur `http://localhost:3000`
 
-## 📱 Design Responsive
+## 📱 Utilisation
 
-### Mobile First
-- Interface optimisée pour smartphones
-- Navigation hamburger sur mobile
-- Cartes remplacent les tableaux sur petits écrans
-- Touch-friendly avec boutons adaptés
+### Première Connexion
+1. Accédez à l'application
+2. Créez un compte ou connectez-vous
+3. Le tableau de bord s'affiche avec les métriques
 
-### Breakpoints
-- **Mobile** : < 768px - Design en cartes
-- **Tablet** : 768px - 1024px - Transition progressive
-- **Desktop** : > 1024px - Tableau complet
+### Ajouter des Produits
+1. Cliquez sur "Ajouter un produit"
+2. Remplissez les informations (nom, catégorie, stock, prix)
+3. Définissez le seuil d'alerte
+4. Sauvegardez
 
-## 🔒 Sécurité
+### Gérer les Stocks
+- **Visualiser** : Consultez la liste complète dans l'onglet "Vins"
+- **Modifier** : Cliquez sur un produit pour éditer ses informations
+- **Ajuster** : Utilisez l'ajustement rapide pour mettre à jour les quantités
+- **Surveiller** : Les alertes apparaissent automatiquement
 
-### Firebase Security Rules
-\`\`\`javascript
-// Firestore Rules recommandées
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /boissons/{document} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
-\`\`\`
+### Alertes et Notifications
+- **Indicateurs visuels** : Badges colorés selon les niveaux
+- **Panel d'alertes** : Vue centralisée des produits en rupture
+- **Notifications** : Alertes en temps réel
 
-### Protection des Routes
-- Composant `ProtectedRoute` pour pages privées
-- Redirection automatique vers login si non authentifié
-- Context `AuthProvider` pour gestion globale de l'état
+## 🎨 Interface Utilisateur
 
-## 📂 Structure du Projet
+### Design System
+- **Palette de couleurs** : Tons professionnels (gris, vert, rouge pour alertes)
+- **Typography** : Inter font pour une lisibilité optimale  
+- **Composants** : Design system cohérent avec Radix UI
+- **Responsive** : Optimisé mobile, tablette et desktop
 
-\`\`\`
-src/
-├── app/                    # Pages Next.js (App Router)
-│   ├── dashboard/         # Page principale
-│   ├── login/            # Authentification
-│   ├── add/              # Ajout de produit
-│   ├── edit/[id]/        # Édition dynamique
-│   ├── not-found.tsx     # Page 404
-│   ├── layout.tsx        # Layout global
-│   └── page.tsx          # Page d'accueil
-├── components/           # Composants réutilisables
-│   ├── ui/              # Composants ShadCN UI
-│   ├── Navbar.tsx       # Barre de navigation
-│   ├── StockTable.tsx   # Tableau des stocks
-│   ├── AlertsPanel.tsx  # Panel d'alertes
-│   └── ProtectedRoute.tsx # Protection des routes
-├── contexts/            # Contexts React
-│   └── AuthContext.tsx  # Authentification globale
-├── hooks/               # Hooks personnalisés
-│   └── useStockAlerts.js # Gestion des alertes
-├── lib/                 # Bibliothèques et utils
-│   ├── firebase.js      # Configuration Firebase
-│   ├── firestore.js     # Fonctions Firestore
-│   └── utils.ts         # Utilitaires
-└── styles/              # Styles globaux
-    └── globals.css      # CSS global + Tailwind
-\`\`\`
+### Accessibilité
+- **Contraste** : Respect des standards WCAG 2.1
+- **Navigation clavier** : Support complet
+- **Screen readers** : Labels et descriptions appropriés
+- **Focus indicators** : Indicateurs visuels clairs
 
-## 🎯 Utilisation
+## 🚀 Déploiement
 
-### Premier Usage
-1. **Connexion** : Créer un compte ou se connecter
-2. **Ajouter des produits** : Utiliser le bouton "Ajouter une boisson"
-3. **Configurer les seuils** : Définir les niveaux d'alerte pour chaque produit
-4. **Surveiller** : Le dashboard affiche automatiquement les alertes
+### Firebase Hosting
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+npm run build
+firebase deploy
+```
 
-### Workflow Quotidien
-1. **Consulter les alertes** : Vérifier les stocks critiques
-2. **Mettre à jour les quantités** : Modifier les stocks après réception/vente
-3. **Ajouter de nouveaux produits** : Enrichir l'inventaire
-4. **Analyser** : Utiliser les filtres pour analyser par catégorie
+### Vercel (Alternative)
+```bash
+npm install -g vercel
+vercel --prod
+```
 
-## 🛡️ Bonnes Pratiques
+## 📊 Structure du Projet
 
-### Gestion des Seuils
-- **Produits rapides** : Seuil élevé (ex: 20-30 unités)
-- **Produits lents** : Seuil bas (ex: 5-10 unités)
-- **Révision mensuelle** : Ajuster selon les tendances
+```
+amphore-stock/
+├── src/
+│   ├── app/                 # Pages Next.js (App Router)
+│   │   ├── dashboard/       # Tableau de bord
+│   │   ├── vins/           # Gestion des vins
+│   │   ├── add/            # Ajout de produits
+│   │   └── login/          # Authentification
+│   ├── components/         # Composants React
+│   │   ├── ui/             # Composants de base
+│   │   ├── StockTable.tsx  # Table des stocks
+│   │   ├── AlertsPanel.tsx # Panel d'alertes
+│   │   └── Navbar.tsx      # Navigation
+│   ├── contexts/           # Contextes React
+│   ├── hooks/              # Hooks personnalisés
+│   ├── lib/                # Utilitaires et configuration
+│   └── types/              # Types TypeScript
+├── public/                 # Assets statiques
+├── scripts/                # Scripts d'import/export
+└── docs/                   # Documentation
+```
 
-### Catégorisation
-- **Cohérence** : Utiliser les mêmes catégories
-- **Spécificité** : Adapter aux besoins du restaurant
-- **Evolution** : Ajouter de nouvelles catégories si nécessaire
+## 🔧 Scripts Disponibles
+
+```bash
+# Développement
+npm run dev              # Serveur de développement
+npm run build           # Build de production  
+npm run start           # Serveur de production
+npm run lint            # Vérification du code
+
+# Scripts d'import
+npm run import:excel    # Import depuis Excel
+npm run preview:import  # Prévisualiser l'import
+npm run create:testuser # Créer un utilisateur test
+```
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! Pour contribuer :
+Les contributions sont les bienvenues ! Veuillez suivre ces étapes :
 
-1. Fork le projet
-2. Créer une branche feature (\`git checkout -b feature/AmazingFeature\`)
-3. Commit les changements (\`git commit -m 'Add AmazingFeature'\`)
-4. Push sur la branche (\`git push origin feature/AmazingFeature\`)
-5. Ouvrir une Pull Request
+1. **Fork** le projet
+2. **Créer** une branche pour votre fonctionnalité
+3. **Commiter** vos changements  
+4. **Pusher** vers la branche
+5. **Ouvrir** une Pull Request
 
-## 📄 Licence
+### Guidelines de Contribution
+- Code en TypeScript avec types stricts
+- Tests unitaires pour les nouvelles fonctionnalités
+- Documentation des changements
+- Respect des conventions de code (ESLint)
 
-Ce projet est sous licence MIT. Voir le fichier \`LICENSE\` pour plus de détails.
+## 📋 Roadmap
+
+### Version 2.0 (Q2 2024)
+- [ ] **Gestion multi-établissements**
+- [ ] **API REST complète**
+- [ ] **Application mobile** (React Native)
+- [ ] **Rapports avancés** avec exports PDF
+
+### Version 2.1 (Q3 2024)
+- [ ] **Intégrations** fournisseurs
+- [ ] **Commandes automatiques**
+- [ ] **Analytics avancées**
+- [ ] **Mode hors ligne**
 
 ## 📞 Support
 
-Pour toute question ou support :
-- 📧 Email : support@almanach-stock.com
-- 📱 Documentation : [Wiki du projet]
-- 🐛 Issues : [GitHub Issues]
+### Documentation
+- 📖 [Guide d'utilisation complet](./docs/USER_GUIDE.md)
+- 🔧 [Guide technique](./docs/TECHNICAL_GUIDE.md)
+- 🚀 [Guide de déploiement](./docs/DEPLOYMENT_GUIDE.md)
+
+### Contact
+- 📧 Email : support@amphore-stock.com
+- 💬 Discussions : [GitHub Discussions](https://github.com/votre-username/amphore-stock/discussions)
+- 🐛 Bugs : [Issues GitHub](https://github.com/votre-username/amphore-stock/issues)
 
 ---
 
-**Almanach Stock** - Solution professionnelle de gestion de stock pour restaurants 🍾
+**Amphore Stock** - Solution professionnelle de gestion de stock pour restaurants 🍾
+
+Développé avec ❤️ pour optimiser la gestion d'inventaire des professionnels de la restauration.

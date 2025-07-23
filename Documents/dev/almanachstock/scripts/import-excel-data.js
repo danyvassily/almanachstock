@@ -260,7 +260,7 @@ function processWineSheet(worksheet) {
 }
 
 async function main() {
-  console.log("📥 Import des données Excel vers Almanach Stock");
+  console.log("📥 Import des données Excel vers Amphore Stock");
   console.log("=".repeat(50));
 
   const allProducts = [];

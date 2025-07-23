@@ -53,7 +53,7 @@ export default function NotFound() {
         
         {/* Footer */}
         <div className="text-sm text-gray-500 pt-8">
-          <p>Almanach Stock © 2024</p>
+          <p>© 2024 Dany Manfoumbi Vassiliakos - danyvassiliakos@gmail.com</p>
         </div>
       </div>
     </div>
